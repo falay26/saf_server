@@ -20,7 +20,8 @@
     "js-crypto-aes": "^1.0.6",
     "mongoose": "^8.9.2",
     "node-cron": "^3.0.3",
-    "pug": "^3.0.3"
+    "pug": "^3.0.3",
+    "puppeteer": "^23.11.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
