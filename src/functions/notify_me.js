@@ -7,7 +7,7 @@ admin.initializeApp({
     private_key_id: process.env.JSON_3,
     private_key:
       "-----BEGIN PRIVATE KEY-----\n" +
-      process.env.JSON_4 +
+      process.env.JSON_4.replace(/\\n/g, "\n") +
       "\n-----END PRIVATE KEY-----\n",
     client_email: process.env.JSON_5,
     client_id: process.env.JSON_6,
