@@ -23,7 +23,7 @@ const M = async (hash) => {
     let hour = date.getHours();
     let minute = date.getMinutes();
 
-    if (stocks.length === 6) {
+    if (stocks.length === 7) {
       //Getting current prices of the stocks we own.
       let stocks_array = stocks.map((i) => {
         return {
