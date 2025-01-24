@@ -23,7 +23,7 @@ const M = async (hash) => {
     let hour = date.getHours();
     let minute = date.getMinutes();
 
-    if (stocks.length === 7) {
+    if (stocks.length >= 6 || (hour === 10 && minute < 18)) {
       //Getting current prices of the stocks we own.
       let stocks_array = stocks.map((i) => {
         return {
@@ -64,7 +64,8 @@ const M = async (hash) => {
             isNaN(stock.values[stock.values.length - 2]) &&
             isNaN(stock.values[stock.values.length - 3])
           ) {
-            NM("Giriş yapmalısın!");
+            //TODO: If all stocks are nan for last 3..
+            //NM("Giriş yapmalısın!");
           }
           //TODO: If last 3 is NaN, notify "Need To Login!"
           stock.tiers = stock.tiers.concat([tier]);

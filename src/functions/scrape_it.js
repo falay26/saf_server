@@ -35,32 +35,36 @@ const GetHTmlData = async () => {
       { $sort: { created_at: 1 } },
     ]);
     const last_1_loses = Object.values(day_5_days[4].stocks)
+      .filter((i) => i !== null)
       .filter((i) => {
-        let price = i.price;
-        let last_price = day_5_days[3].stocks[i.name].price;
+        let price = i?.price;
+        let last_price = day_5_days[3].stocks[i.name]?.price;
         return last_price > price;
       })
       .map((i) => i.name);
     const last_2_loses = Object.values(day_5_days[3].stocks)
+      .filter((i) => i !== null)
       .filter((i) => {
-        let price = i.price;
-        let last_price = day_5_days[2].stocks[i.name].price;
+        let price = i?.price;
+        let last_price = day_5_days[2].stocks[i.name]?.price;
         return last_price > price;
       })
       .map((i) => i.name)
       .filter((i) => last_1_loses.includes(i));
     const last_3_loses = Object.values(day_5_days[2].stocks)
+      .filter((i) => i !== null)
       .filter((i) => {
-        let price = i.price;
-        let last_price = day_5_days[1].stocks[i.name].price;
+        let price = i?.price;
+        let last_price = day_5_days[1].stocks[i.name]?.price;
         return last_price > price;
       })
       .map((i) => i.name)
       .filter((i) => last_2_loses.includes(i));
     const last_4_loses = Object.values(day_5_days[1].stocks)
+      .filter((i) => i !== null)
       .filter((i) => {
-        let price = i.price;
-        let last_price = day_5_days[0].stocks[i.name].price;
+        let price = i?.price;
+        let last_price = day_5_days[0].stocks[i.name]?.price;
         return last_price > price;
       })
       .map((i) => i.name)
@@ -128,6 +132,7 @@ const GetHTmlData = async () => {
       { $limit: 60 },
       { $sort: { created_at: 1 } },
     ]);
+    /*
     let all_stocks_sorted = Bist100.filter(
       (i) => !last_10_names.includes(i) && table_stocks.includes(i)
     )
@@ -135,15 +140,16 @@ const GetHTmlData = async () => {
         let highest = last_60_days[0].stocks[i].price;
         let lowest = last_60_days[0].stocks[i].price;
         let latest_price = last_60_days[59].stocks[i].price;
-        last_60_days.map((k) => {
-          let price = k.stocks[i].price;
-          if (price > highest) {
-            highest = price;
-          }
-          if (price < lowest) {
-            lowest = price;
-          }
-        });
+        last_60_days
+          .map((k) => {
+            let price = k.stocks[i].price;
+            if (price > highest) {
+              highest = price;
+            }
+            if (price < lowest) {
+              lowest = price;
+            }
+          });
         let point = (latest_price - lowest) / (highest - lowest);
         return {
           name: i,
@@ -157,11 +163,9 @@ const GetHTmlData = async () => {
         return a.point - b.point;
       })
       .map((i) => i.name);
+      */
 
-    let finals =
-      hour === 10 && minute <= 15
-        ? [all_stocks_sorted, all_stocks_sorted, all_stocks_sorted]
-        : [bests_1, bests_2, bests_3, bests_4, bests_5];
+    let finals = [bests_1, bests_2, bests_3, bests_4, bests_5];
     let final = {
       name:
         finals[0].length !== 0
